@@ -6,10 +6,10 @@ using System.Collections.Generic;
 namespace TEST {
     internal class TestConsole {
         static void Main(string[] args) {
-            var list = new WTFLIST {
-                new TEST {name = "TEST1", num=1},
-                new TEST { name = "TEST2", num=2}
-            };
+            //var list = new WTFLIST {
+            //    new TEST {name = "TEST1", num=1},
+            //    new TEST { name = "TEST2", num=2}
+            //};
             var akldata = new AKLData();
             akldata.HOST_REC.AddRange(
                 new List<AKLData.HOST_RECItem>{
@@ -19,7 +19,6 @@ namespace TEST {
                     new AKLData.HOST_RECItem { MESSAGE = "TEST" }
                 }
             );
-
 
             ListDebuggerVisualizerClient.TestShowVisualizer(akldata.HOST_REC);
             //ListDebuggerVisualizerClient.TestShowVisualizer(new List<string> { "TEST1", "TEST2" });
