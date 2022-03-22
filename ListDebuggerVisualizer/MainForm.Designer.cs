@@ -50,7 +50,7 @@
             // 
             this.gridControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridControl.Location = new System.Drawing.Point(0, 0);
-            this.gridControl.LookAndFeel.SkinName = "DevExpress Dark Style";
+            this.gridControl.LookAndFeel.SkinName = "Visual Studio 2013 Dark";
             this.gridControl.LookAndFeel.UseDefaultLookAndFeel = false;
             this.gridControl.MainView = this.gridView;
             this.gridControl.Name = "gridControl";
@@ -61,6 +61,12 @@
             // 
             // gridView
             // 
+            this.gridView.Appearance.Empty.BackColor = System.Drawing.Color.Black;
+            this.gridView.Appearance.Empty.Options.UseBackColor = true;
+            this.gridView.Appearance.HeaderPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.gridView.Appearance.HeaderPanel.Options.UseBackColor = true;
+            this.gridView.Appearance.Row.BackColor = System.Drawing.Color.Black;
+            this.gridView.Appearance.Row.Options.UseBackColor = true;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
             this.gridView.OptionsView.ShowGroupPanel = false;

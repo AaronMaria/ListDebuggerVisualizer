@@ -11,7 +11,14 @@ namespace TEST {
                 new TEST { name = "TEST2", num=2}
             };
             var akldata = new AKLData();
-            akldata.HOST_REC.Add(new AKLData.HOST_RECItem { MESSAGE = "TEST" });
+            akldata.HOST_REC.AddRange(
+                new List<AKLData.HOST_RECItem>{
+                    new AKLData.HOST_RECItem { MESSAGE = "TEST" } ,
+                    new AKLData.HOST_RECItem { MESSAGE = "TEST" } ,
+                    new AKLData.HOST_RECItem { MESSAGE = "TEST" } ,
+                    new AKLData.HOST_RECItem { MESSAGE = "TEST" }
+                }
+            );
 
 
             ListDebuggerVisualizerClient.TestShowVisualizer(akldata.HOST_REC);
@@ -19,7 +26,7 @@ namespace TEST {
         }
 
         public class WTFLIST : IList<TEST> {
-            public List<TEST> list=new();
+            public List<TEST> list = new();
 
             public TEST this[int index] { get => ((IList<TEST>)list)[index]; set => ((IList<TEST>)list)[index] = value; }
 

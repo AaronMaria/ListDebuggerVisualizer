@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>Library</OutputType>
+        <TargetFramework>net48</TargetFramework>
+        <UseWindowsForms>true</UseWindowsForms>
+        <LangVersion>latest</LangVersion>
+        <RootNamespace>ListDebuggerVisualizer</RootNamespace>
+        <AssemblyName>ListDebuggerVisualizer</AssemblyName>
+    </PropertyGroup>
+    <ItemGroup>
+      <PackageReference Include="Costura.Fody" Version="5.7.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="DevExpress.Win.Grid" Version="21.2.4" />
+      <PackageReference Include="DevExpress.Win.Grid.de" Version="21.2.4" />
+      <PackageReference Include="Fody" Version="6.6.0">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Microsoft.VisualStudio.DebuggerVisualizers" Version="17.0.2012701" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\ListDebugeeSide\ListDebuggeeSide.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Update="source.extension.vsixmanifest">
+        <SubType>Designer</SubType>
+      </None>
+    </ItemGroup>
+</Project>
