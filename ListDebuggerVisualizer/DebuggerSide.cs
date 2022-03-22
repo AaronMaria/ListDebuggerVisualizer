@@ -12,9 +12,12 @@ using System.Windows.Forms;
 [assembly: DebuggerVisualizer(
     typeof(ListDebuggerVisualizer.ListDebuggerVisualizerClient), 
     typeof(ListDebuggeeSide.VisualizerJsonObjectSource), 
-    Target = typeof(Collection<>), 
+    Target = typeof(IEnumerable<>), 
     Description = "List Debugger Visualizer"
 )]
+[assembly: DebuggerVisualizer(typeof(ListDebuggerVisualizer.ListDebuggerVisualizerClient), typeof(ListDebuggeeSide.VisualizerJsonObjectSource), TargetTypeName = "System.Collections.Generic.List`1, mscorlib", Description = "List")]
+[assembly: DebuggerVisualizer(typeof(ListDebuggerVisualizer.ListDebuggerVisualizerClient), typeof(ListDebuggeeSide.VisualizerJsonObjectSource), TargetTypeName = "DataList`1, mscorlib", Description = "DataList")]
+[assembly: DebuggerVisualizer(typeof(ListDebuggerVisualizer.ListDebuggerVisualizerClient), typeof(ListDebuggeeSide.VisualizerJsonObjectSource), TargetTypeName = "List`1, mscorlib", Description = "List")]
 namespace ListDebuggerVisualizer {
     public class ListDebuggerVisualizerClient : DialogDebuggerVisualizer {
         override protected void Show(IDialogVisualizerService windowService, IVisualizerObjectProvider objectProvider) {

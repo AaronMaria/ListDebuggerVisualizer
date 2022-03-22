@@ -19,6 +19,10 @@ namespace TEST {
                     new AKLData.HOST_RECItem { MESSAGE = "TEST" }
                 }
             );
+            var col = new List<string> {
+                "TEST",
+                "TEST"
+            };
 
             ListDebuggerVisualizerClient.TestShowVisualizer(akldata.HOST_REC);
             //ListDebuggerVisualizerClient.TestShowVisualizer(new List<string> { "TEST1", "TEST2" });
