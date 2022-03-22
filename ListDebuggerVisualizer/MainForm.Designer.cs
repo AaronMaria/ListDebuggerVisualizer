@@ -69,6 +69,7 @@
             this.gridView.Appearance.Row.Options.UseBackColor = true;
             this.gridView.GridControl = this.gridControl;
             this.gridView.Name = "gridView";
+            this.gridView.OptionsView.ShowAutoFilterRow = true;
             this.gridView.OptionsView.ShowGroupPanel = false;
             // 
             // MainForm

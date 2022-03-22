@@ -56,9 +56,11 @@ namespace ListDebuggerVisualizer {
             if (mySetting != null) {
                 this.Location = mySetting.Location;
                 this.Size = mySetting.Size;
+
                 if (File.Exists(mySetting.GridSettingsFile)) {
                     this.gridView.RestoreLayoutFromXml(mySetting.GridSettingsFile);
                 }
+                this.gridView.ClearColumnsFilter();
             }
         }
 
@@ -76,7 +78,7 @@ namespace ListDebuggerVisualizer {
             if (mySetting == null) {
                 mySetting = new ListTypeItemSettings();
                 mySetting.Name = this.ListType;
-                mySetting.GridSettingsFile = settingsFile.DirectoryName + "\\grid_settings_" + mySetting.Name + ".xml";
+                mySetting.GridSettingsFile = GetSettingsPath() + "\\grid_settings_" + mySetting.Name + ".xml";
                 settings.Add(mySetting);
             }
             mySetting.Location = this.Location;
@@ -91,19 +93,7 @@ namespace ListDebuggerVisualizer {
             this.gridView.SaveLayoutToXml(mySetting.GridSettingsFile);
         }
 
-        private List<ListTypeItemSettings> GetSettingsList() {
-            string settingsFile = GetSettingsStorageFile();
-            if (File.Exists(settingsFile)) {
-                return DeserializeFromXml<List<ListTypeItemSettings>>(settingsFile);
-            } else {
-                return null;
-            }
-        }
 
-        private string GetSettingsStorageFile() {
-            string assemblyFolder = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return Path.Combine(assemblyFolder, "ListDebuggerVisualizerSettings.xml");
-        }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             if (this.formLoaded) {
@@ -125,6 +115,26 @@ namespace ListDebuggerVisualizer {
                 obj = (T)serializer.Deserialize(textReader);
             }
             return obj;
+        }
+
+
+
+        private List<ListTypeItemSettings> GetSettingsList() {
+            string settingsFile = GetSettingsStorageFile();
+            if (File.Exists(settingsFile)) {
+                return DeserializeFromXml<List<ListTypeItemSettings>>(settingsFile);
+            } else {
+                return null;
+            }
+        }
+        private string GetSettingsStorageFile() {
+            return Path.Combine(GetSettingsPath(), "ListDebuggerVisualizerSettings.xml");
+        }
+
+        private string GetSettingsPath() {
+            var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "\\GridSettings\\" + Environment.UserName + "\\";
+            Directory.CreateDirectory(path);
+            return path;
         }
 
     }
